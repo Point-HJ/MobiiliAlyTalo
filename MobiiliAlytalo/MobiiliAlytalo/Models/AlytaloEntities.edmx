@@ -130,7 +130,7 @@ warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defi
           <Property Name="ValoAikaLeima100" Type="DateTime" Precision="3" />
           <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="AlytaloEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AlytaloEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" />
           <EntitySet Name="Valaisin" EntityType="Self.Valaisin" />
@@ -141,7 +141,7 @@ warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defi
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities">
+        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities1">
           <EntitySetMapping Name="Sauna">
             <EntityTypeMapping TypeName="AlytaloModel.Sauna">
               <MappingFragment StoreEntitySet="Sauna">

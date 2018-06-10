@@ -13,10 +13,10 @@ namespace MobiiliAlytalo.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AlytaloEntities : DbContext
+    public partial class AlytaloEntities1 : DbContext
     {
-        public AlytaloEntities()
-            : base("name=AlytaloEntities")
+        public AlytaloEntities1()
+            : base("name=AlytaloEntities1")
         {
         }
     
