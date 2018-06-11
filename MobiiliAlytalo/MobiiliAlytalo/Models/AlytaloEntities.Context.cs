@@ -13,10 +13,10 @@ namespace MobiiliAlytalo.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AlytaloEntities2 : DbContext
+    public partial class AlytaloEntities3 : DbContext
     {
-        public AlytaloEntities2()
-            : base("name=AlytaloEntities2")
+        public AlytaloEntities3()
+            : base("name=AlytaloEntities3")
         {
         }
     
@@ -25,7 +25,7 @@ namespace MobiiliAlytalo.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Valo> Valo { get; set; }
+        public virtual DbSet<Valot> Valot { get; set; }
         public virtual DbSet<Sauna> Sauna { get; set; }
         public virtual DbSet<TaloLampotila> TaloLampotila { get; set; }
         public virtual DbSet<Valaisin> Valaisin { get; set; }

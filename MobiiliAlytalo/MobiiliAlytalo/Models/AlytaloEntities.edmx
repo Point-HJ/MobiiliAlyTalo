@@ -35,23 +35,23 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValaisinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <EntityType Name="Valo">
+        <EntityType Name="Valot">
           <Key>
             <PropertyRef Name="ValoID" />
           </Key>
           <Property Name="ValoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ValoONOFF" Type="bit" />
-          <Property Name="Valo33" Type="bit" />
-          <Property Name="Valo66" Type="bit" />
-          <Property Name="Valo100" Type="bit" />
+          <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="150" />
+          <Property Name="ValoONOFF" Type="bit" Nullable="false" />
+          <Property Name="Valo33" Type="bit" Nullable="false" />
+          <Property Name="Valo66" Type="bit" Nullable="false" />
+          <Property Name="Valo100" Type="bit" Nullable="false" />
           <Property Name="ValoAikaLeimaONOFF" Type="datetime" />
           <Property Name="ValoAikaLeima33" Type="datetime" />
           <Property Name="ValoAikaLeima66" Type="datetime" />
           <Property Name="ValoAikaLeima100" Type="datetime" />
-          <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="AlytaloModelStoreContainer">
-          <EntitySet Name="Valo" EntityType="Self.Valo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valot" EntityType="Self.Valot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Sauna].[SaunaID] AS [SaunaID], 
@@ -79,20 +79,20 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlytaloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Valo">
+        <EntityType Name="Valot">
           <Key>
             <PropertyRef Name="ValoID" />
           </Key>
           <Property Name="ValoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ValoONOFF" Type="Boolean" />
-          <Property Name="Valo33" Type="Boolean" />
-          <Property Name="Valo66" Type="Boolean" />
-          <Property Name="Valo100" Type="Boolean" />
+          <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ValoONOFF" Type="Boolean" Nullable="false" />
+          <Property Name="Valo33" Type="Boolean" Nullable="false" />
+          <Property Name="Valo66" Type="Boolean" Nullable="false" />
+          <Property Name="Valo100" Type="Boolean" Nullable="false" />
           <Property Name="ValoAikaLeimaONOFF" Type="DateTime" Precision="3" />
           <Property Name="ValoAikaLeima33" Type="DateTime" Precision="3" />
           <Property Name="ValoAikaLeima66" Type="DateTime" Precision="3" />
           <Property Name="ValoAikaLeima100" Type="DateTime" Precision="3" />
-          <Property Name="ValaisinNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sauna">
           <Key>
@@ -118,8 +118,8 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValaisinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="AlytaloEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Valo" EntityType="Self.Valo" />
+        <EntityContainer Name="AlytaloEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Valot" EntityType="Self.Valot" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" />
           <EntitySet Name="Valaisin" EntityType="Self.Valaisin" />
@@ -129,11 +129,12 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities2">
-          <EntitySetMapping Name="Valo">
-            <EntityTypeMapping TypeName="AlytaloModel.Valo">
-              <MappingFragment StoreEntitySet="Valo">
+        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities3">
+          <EntitySetMapping Name="Valot">
+            <EntityTypeMapping TypeName="AlytaloModel.Valot">
+              <MappingFragment StoreEntitySet="Valot">
                 <ScalarProperty Name="ValoID" ColumnName="ValoID" />
+                <ScalarProperty Name="ValaisinNimi" ColumnName="ValaisinNimi" />
                 <ScalarProperty Name="ValoONOFF" ColumnName="ValoONOFF" />
                 <ScalarProperty Name="Valo33" ColumnName="Valo33" />
                 <ScalarProperty Name="Valo66" ColumnName="Valo66" />
@@ -142,7 +143,6 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
                 <ScalarProperty Name="ValoAikaLeima33" ColumnName="ValoAikaLeima33" />
                 <ScalarProperty Name="ValoAikaLeima66" ColumnName="ValoAikaLeima66" />
                 <ScalarProperty Name="ValoAikaLeima100" ColumnName="ValoAikaLeima100" />
-                <ScalarProperty Name="ValaisinNimi" ColumnName="ValaisinNimi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,10 +12,11 @@ namespace MobiiliAlytalo.ViewModel
         public bool Valo33 { get; set; }
         public bool Valo66 { get; set; }
         public bool Valo100  { get; set; }
+        public string ValaisinNimi { get; set; }
         public DateTime? ValoAikaLeimaONOFF { get; set; }
         public DateTime? ValoAikaLeima33 { get; set; }
         public DateTime? ValoAikaLeima66 { get; set; }
         public DateTime? ValoAikaLeima100 { get; set; }
-        public string ValaisinNimi { get; set; }
+       
     }
 }

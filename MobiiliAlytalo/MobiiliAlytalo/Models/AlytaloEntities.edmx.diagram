@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="362105a767e44d5e9deaed5abf4b8b94" Name="Diagram1">
-        <EntityTypeShape EntityType="AlytaloModel.Valo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="1dab06dc4ef34295ac6a13b6b17013b9" Name="Diagram1">
+        <EntityTypeShape EntityType="AlytaloModel.Valot" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AlytaloModel.Sauna" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AlytaloModel.TaloLampotila" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AlytaloModel.Valaisin" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

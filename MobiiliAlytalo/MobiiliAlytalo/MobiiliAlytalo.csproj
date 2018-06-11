@@ -185,7 +185,7 @@
     <Compile Include="Models\Valaisin.cs">
       <DependentUpon>AlytaloEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Valo.cs">
+    <Compile Include="Models\Valot.cs">
       <DependentUpon>AlytaloEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -248,6 +248,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Valo\Index.cshtml" />
+    <Content Include="Views\Valo\Edit.cshtml" />
+    <Content Include="Views\Valo\Create.cshtml" />
+    <Content Include="Views\Valo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,28 +11,28 @@ namespace MobiiliAlytalo.Controllers
 {
     public class ValoController : Controller
     {
-        private AlytaloEntities2 db = new AlytaloEntities2();
+        private AlytaloEntities3 db = new AlytaloEntities3();
         // GET: Valo
         public ActionResult Index()
         {
             List<ValoViewModel> model = new List<ValoViewModel>();
-            AlytaloEntities2 entities = new AlytaloEntities2();
+            AlytaloEntities3 entities = new AlytaloEntities3();
             try
             {
-                List<Valo> valo = entities.Valo.OrderByDescending(Valo => Valo.ValoID).ToList();
-                foreach (Valo val in valo)
+                List<Valot> valo = entities.Valot.OrderByDescending(Valo => Valo.ValoID).ToList();
+                foreach (Valot val in valo)
                 {
                     ValoViewModel va = new ValoViewModel();
-                    va.ValoID = va.ValoID;
-                    va.ValoONOFF = va.ValoONOFF;
-                    va.Valo33 = va.Valo33;
-                    va.Valo66 = va.Valo66;
-                    va.Valo100 = va.Valo100;
-                    va.ValoAikaLeimaONOFF = va.ValoAikaLeimaONOFF;
-                    va.ValoAikaLeima33 = va.ValoAikaLeima33;
-                    va.ValoAikaLeima66 = va.ValoAikaLeima66;
-                    va.ValoAikaLeima100 = va.ValoAikaLeima100;
-                    va.ValaisinNimi = va.ValaisinNimi;
+                    va.ValoID = val.ValoID;
+                    va.ValoONOFF = val.ValoONOFF;
+                    va.Valo33 = val.Valo33;
+                    va.Valo66 = val.Valo66;
+                    va.Valo100 = val.Valo100;
+                    va.ValoAikaLeimaONOFF = val.ValoAikaLeimaONOFF;
+                    va.ValoAikaLeima33 = val.ValoAikaLeima33;
+                    va.ValoAikaLeima66 = val.ValoAikaLeima66;
+                    va.ValoAikaLeima100 = val.ValoAikaLeima100;
+                    va.ValaisinNimi = val.ValaisinNimi;
                     model.Add(va);
                 }
             }
@@ -52,7 +52,7 @@ namespace MobiiliAlytalo.Controllers
         // GET: Valo/Create
         public ActionResult Create()
         {
-            AlytaloEntities2 db = new AlytaloEntities2();
+            AlytaloEntities3 db = new AlytaloEntities3();
             ValoViewModel model = new ValoViewModel();
 
             return View(model);
@@ -63,10 +63,10 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ValoViewModel model)
         {
-            Valo va = new Valo();
+            Valot va = new Valot();
             va.ValoID = model.ValoID;
             va.ValaisinNimi = model.ValaisinNimi;
-            db.Valo.Add(va);
+            db.Valot.Add(va);
             try
             {
                 db.SaveChanges();
@@ -86,7 +86,7 @@ namespace MobiiliAlytalo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Valo val = db.Valo.Find(id);
+            Valot val = db.Valot.Find(id);
             if (val == null)
             {
                 return HttpNotFound();
@@ -111,7 +111,7 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ValoViewModel model)
         {
-            Valo va = db.Valo.Find(model.ValoID);
+            Valot va = db.Valot.Find(model.ValoID);
             va.ValaisinNimi = model.ValaisinNimi;
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -125,7 +125,7 @@ namespace MobiiliAlytalo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Valo valo = db.Valo.Find(id);
+            Valot valo = db.Valot.Find(id);
             if (valo == null)
             {
                 return HttpNotFound();
@@ -137,8 +137,8 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Valo valo = db.Valo.Find(id);
-            db.Valo.Remove(valo);
+            Valot valo = db.Valot.Find(id);
+            db.Valot.Remove(valo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -158,7 +158,7 @@ namespace MobiiliAlytalo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Valo val = db.Valo.Find(id);
+            Valot val = db.Valot.Find(id);
             if (val == null)
             {
                 return HttpNotFound();
@@ -181,7 +181,7 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ValoONOFF(ValoViewModel model)
         {
-            Valo va = db.Valo.Find(model.ValoID);
+            Valot va = db.Valot.Find(model.ValoID);
             va.ValoONOFF = true;
             va.Valo33 = false;
             va.Valo66 = false;
@@ -202,7 +202,7 @@ namespace MobiiliAlytalo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Valo val = db.Valo.Find(id);
+            Valot val = db.Valot.Find(id);
             if (val == null)
             {
                 return HttpNotFound();
@@ -225,7 +225,7 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Valo33(ValoViewModel model)
         {
-            Valo va = db.Valo.Find(model.ValoID);
+            Valot va = db.Valot.Find(model.ValoID);
             va.ValoONOFF = false;
             va.Valo33 = true;
             va.Valo66 = false;
@@ -247,7 +247,7 @@ namespace MobiiliAlytalo.Controllers
         {
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-        Valo val = db.Valo.Find(id);
+        Valot val = db.Valot.Find(id);
         if (val == null)
         {
             return HttpNotFound();
@@ -270,7 +270,7 @@ namespace MobiiliAlytalo.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Valo66(ValoViewModel model)
     {
-        Valo va = db.Valo.Find(model.ValoID);
+        Valot va = db.Valot.Find(model.ValoID);
         va.ValoONOFF = false;
         va.Valo33 = false;
         va.Valo66 = true;
@@ -291,7 +291,7 @@ namespace MobiiliAlytalo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Valo val = db.Valo.Find(id);
+            Valot val = db.Valot.Find(id);
             if (val == null)
             {
                 return HttpNotFound();
@@ -314,7 +314,7 @@ namespace MobiiliAlytalo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Valo100(ValoViewModel model)
         {
-            Valo va = db.Valo.Find(model.ValoID);
+            Valot va = db.Valot.Find(model.ValoID);
             va.ValoONOFF = false;
             va.Valo33 = false;
             va.Valo66 = false;

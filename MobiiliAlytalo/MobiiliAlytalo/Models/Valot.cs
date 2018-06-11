@@ -12,17 +12,17 @@ namespace MobiiliAlytalo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Valo
+    public partial class Valot
     {
         public int ValoID { get; set; }
-        public Nullable<bool> ValoONOFF { get; set; }
-        public Nullable<bool> Valo33 { get; set; }
-        public Nullable<bool> Valo66 { get; set; }
-        public Nullable<bool> Valo100 { get; set; }
+        public string ValaisinNimi { get; set; }
+        public bool ValoONOFF { get; set; }
+        public bool Valo33 { get; set; }
+        public bool Valo66 { get; set; }
+        public bool Valo100 { get; set; }
         public Nullable<System.DateTime> ValoAikaLeimaONOFF { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima33 { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima66 { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima100 { get; set; }
-        public string ValaisinNimi { get; set; }
     }
 }
