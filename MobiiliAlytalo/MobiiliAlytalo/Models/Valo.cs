@@ -15,10 +15,11 @@ namespace MobiiliAlytalo.Models
     public partial class Valo
     {
         public int ValoID { get; set; }
-        public Nullable<bool> ValoOFF { get; set; }
+        public Nullable<bool> ValoONOFF { get; set; }
         public Nullable<bool> Valo33 { get; set; }
         public Nullable<bool> Valo66 { get; set; }
         public Nullable<bool> Valo100 { get; set; }
+        public Nullable<System.DateTime> ValoAikaLeimaONOFF { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima33 { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima66 { get; set; }
         public Nullable<System.DateTime> ValoAikaLeima100 { get; set; }

@@ -35,23 +35,23 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValaisinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Valo">
           <Key>
             <PropertyRef Name="ValoID" />
           </Key>
           <Property Name="ValoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ValoOFF" Type="bit" />
+          <Property Name="ValoONOFF" Type="bit" />
           <Property Name="Valo33" Type="bit" />
           <Property Name="Valo66" Type="bit" />
           <Property Name="Valo100" Type="bit" />
+          <Property Name="ValoAikaLeimaONOFF" Type="datetime" />
           <Property Name="ValoAikaLeima33" Type="datetime" />
           <Property Name="ValoAikaLeima66" Type="datetime" />
           <Property Name="ValoAikaLeima100" Type="datetime" />
-          <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="150" />
+          <Property Name="ValaisinNimi" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="AlytaloModelStoreContainer">
+          <EntitySet Name="Valo" EntityType="Self.Valo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Sauna].[SaunaID] AS [SaunaID], 
@@ -73,25 +73,27 @@ warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defi
     [Valaisin].[ValaisinNimi] AS [ValaisinNimi]
     FROM [dbo].[Valaisin] AS [Valaisin]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Valo" EntityType="Self.Valo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Valo].[ValoID] AS [ValoID], 
-    [Valo].[ValoOFF] AS [ValoOFF], 
-    [Valo].[Valo33] AS [Valo33], 
-    [Valo].[Valo66] AS [Valo66], 
-    [Valo].[Valo100] AS [Valo100], 
-    [Valo].[ValoAikaLeima33] AS [ValoAikaLeima33], 
-    [Valo].[ValoAikaLeima66] AS [ValoAikaLeima66], 
-    [Valo].[ValoAikaLeima100] AS [ValoAikaLeima100], 
-    [Valo].[ValaisinNimi] AS [ValaisinNimi]
-    FROM [dbo].[Valo] AS [Valo]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlytaloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Valo">
+          <Key>
+            <PropertyRef Name="ValoID" />
+          </Key>
+          <Property Name="ValoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValoONOFF" Type="Boolean" />
+          <Property Name="Valo33" Type="Boolean" />
+          <Property Name="Valo66" Type="Boolean" />
+          <Property Name="Valo100" Type="Boolean" />
+          <Property Name="ValoAikaLeimaONOFF" Type="DateTime" Precision="3" />
+          <Property Name="ValoAikaLeima33" Type="DateTime" Precision="3" />
+          <Property Name="ValoAikaLeima66" Type="DateTime" Precision="3" />
+          <Property Name="ValoAikaLeima100" Type="DateTime" Precision="3" />
+          <Property Name="ValaisinNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Sauna">
           <Key>
             <PropertyRef Name="SaunaID" />
@@ -116,32 +118,34 @@ warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defi
           <Property Name="ValaisinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Valo">
-          <Key>
-            <PropertyRef Name="ValoID" />
-          </Key>
-          <Property Name="ValoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ValoOFF" Type="Boolean" />
-          <Property Name="Valo33" Type="Boolean" />
-          <Property Name="Valo66" Type="Boolean" />
-          <Property Name="Valo100" Type="Boolean" />
-          <Property Name="ValoAikaLeima33" Type="DateTime" Precision="3" />
-          <Property Name="ValoAikaLeima66" Type="DateTime" Precision="3" />
-          <Property Name="ValoAikaLeima100" Type="DateTime" Precision="3" />
-          <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="AlytaloEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AlytaloEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Valo" EntityType="Self.Valo" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" />
           <EntitySet Name="Valaisin" EntityType="Self.Valaisin" />
-          <EntitySet Name="Valo" EntityType="Self.Valo" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities1">
+        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities2">
+          <EntitySetMapping Name="Valo">
+            <EntityTypeMapping TypeName="AlytaloModel.Valo">
+              <MappingFragment StoreEntitySet="Valo">
+                <ScalarProperty Name="ValoID" ColumnName="ValoID" />
+                <ScalarProperty Name="ValoONOFF" ColumnName="ValoONOFF" />
+                <ScalarProperty Name="Valo33" ColumnName="Valo33" />
+                <ScalarProperty Name="Valo66" ColumnName="Valo66" />
+                <ScalarProperty Name="Valo100" ColumnName="Valo100" />
+                <ScalarProperty Name="ValoAikaLeimaONOFF" ColumnName="ValoAikaLeimaONOFF" />
+                <ScalarProperty Name="ValoAikaLeima33" ColumnName="ValoAikaLeima33" />
+                <ScalarProperty Name="ValoAikaLeima66" ColumnName="ValoAikaLeima66" />
+                <ScalarProperty Name="ValoAikaLeima100" ColumnName="ValoAikaLeima100" />
+                <ScalarProperty Name="ValaisinNimi" ColumnName="ValaisinNimi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sauna">
             <EntityTypeMapping TypeName="AlytaloModel.Sauna">
               <MappingFragment StoreEntitySet="Sauna">
@@ -165,21 +169,6 @@ warning 6002: The table/view 'Alytalo.dbo.Valo' does not have a primary key defi
             <EntityTypeMapping TypeName="AlytaloModel.Valaisin">
               <MappingFragment StoreEntitySet="Valaisin">
                 <ScalarProperty Name="ValaisinID" ColumnName="ValaisinID" />
-                <ScalarProperty Name="ValaisinNimi" ColumnName="ValaisinNimi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Valo">
-            <EntityTypeMapping TypeName="AlytaloModel.Valo">
-              <MappingFragment StoreEntitySet="Valo">
-                <ScalarProperty Name="ValoID" ColumnName="ValoID" />
-                <ScalarProperty Name="ValoOFF" ColumnName="ValoOFF" />
-                <ScalarProperty Name="Valo33" ColumnName="Valo33" />
-                <ScalarProperty Name="Valo66" ColumnName="Valo66" />
-                <ScalarProperty Name="Valo100" ColumnName="Valo100" />
-                <ScalarProperty Name="ValoAikaLeima33" ColumnName="ValoAikaLeima33" />
-                <ScalarProperty Name="ValoAikaLeima66" ColumnName="ValoAikaLeima66" />
-                <ScalarProperty Name="ValoAikaLeima100" ColumnName="ValoAikaLeima100" />
                 <ScalarProperty Name="ValaisinNimi" ColumnName="ValaisinNimi" />
               </MappingFragment>
             </EntityTypeMapping>
