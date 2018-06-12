@@ -5,26 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="AlytaloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Alytalo.dbo.Sauna' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Sauna">
           <Key>
             <PropertyRef Name="SaunaID" />
           </Key>
           <Property Name="SaunaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SaunaNimi" Type="nvarchar" MaxLength="50" />
-          <Property Name="SaunaNykyLampotila" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SaunaTavoiteLampotila" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SaunaNykyLampotila" Type="int" />
+          <Property Name="SaunaON" Type="bit" Nullable="false" />
+          <Property Name="SaunaOFF" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Alytalo.dbo.TaloLampotila' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TaloLampotila">
           <Key>
             <PropertyRef Name="LampotilaID" />
           </Key>
           <Property Name="LampotilaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nykylampotila" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="TavoiteLampotila" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Nykylampotila" Type="int" />
+          <Property Name="TavoiteLampotila" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -51,22 +48,9 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValoAikaLeima100" Type="datetime" />
         </EntityType>
         <EntityContainer Name="AlytaloModelStoreContainer">
+          <EntitySet Name="Sauna" EntityType="Self.Sauna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Valot" EntityType="Self.Valot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sauna" EntityType="Self.Sauna" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Sauna].[SaunaID] AS [SaunaID], 
-    [Sauna].[SaunaNimi] AS [SaunaNimi], 
-    [Sauna].[SaunaNykyLampotila] AS [SaunaNykyLampotila], 
-    [Sauna].[SaunaTavoiteLampotila] AS [SaunaTavoiteLampotila]
-    FROM [dbo].[Sauna] AS [Sauna]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TaloLampotila].[LampotilaID] AS [LampotilaID], 
-    [TaloLampotila].[Nykylampotila] AS [Nykylampotila], 
-    [TaloLampotila].[TavoiteLampotila] AS [TavoiteLampotila]
-    FROM [dbo].[TaloLampotila] AS [TaloLampotila]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Valaisin" EntityType="Self.Valaisin" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Valaisin].[ValaisinID] AS [ValaisinID], 
@@ -79,6 +63,24 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlytaloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sauna">
+          <Key>
+            <PropertyRef Name="SaunaID" />
+          </Key>
+          <Property Name="SaunaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaunaNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaunaNykyLampotila" Type="Int32" />
+          <Property Name="SaunaON" Type="Boolean" Nullable="false" />
+          <Property Name="SaunaOFF" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaloLampotila">
+          <Key>
+            <PropertyRef Name="LampotilaID" />
+          </Key>
+          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nykylampotila" Type="Int32" />
+          <Property Name="TavoiteLampotila" Type="Int32" />
+        </EntityType>
         <EntityType Name="Valot">
           <Key>
             <PropertyRef Name="ValoID" />
@@ -94,23 +96,6 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValoAikaLeima66" Type="DateTime" Precision="3" />
           <Property Name="ValoAikaLeima100" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Sauna">
-          <Key>
-            <PropertyRef Name="SaunaID" />
-          </Key>
-          <Property Name="SaunaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SaunaNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SaunaNykyLampotila" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SaunaTavoiteLampotila" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="TaloLampotila">
-          <Key>
-            <PropertyRef Name="LampotilaID" />
-          </Key>
-          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nykylampotila" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="TavoiteLampotila" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
         <EntityType Name="Valaisin">
           <Key>
             <PropertyRef Name="ValaisinID" />
@@ -118,10 +103,10 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
           <Property Name="ValaisinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ValaisinNimi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="AlytaloEntities3" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Valot" EntityType="Self.Valot" />
+        <EntityContainer Name="AlytaloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="TaloLampotila" EntityType="Self.TaloLampotila" />
+          <EntitySet Name="Valot" EntityType="Self.Valot" />
           <EntitySet Name="Valaisin" EntityType="Self.Valaisin" />
         </EntityContainer>
       </Schema>
@@ -129,7 +114,27 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities3">
+        <EntityContainerMapping StorageEntityContainer="AlytaloModelStoreContainer" CdmEntityContainer="AlytaloEntities">
+          <EntitySetMapping Name="Sauna">
+            <EntityTypeMapping TypeName="AlytaloModel.Sauna">
+              <MappingFragment StoreEntitySet="Sauna">
+                <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
+                <ScalarProperty Name="SaunaNimi" ColumnName="SaunaNimi" />
+                <ScalarProperty Name="SaunaNykyLampotila" ColumnName="SaunaNykyLampotila" />
+                <ScalarProperty Name="SaunaON" ColumnName="SaunaON" />
+                <ScalarProperty Name="SaunaOFF" ColumnName="SaunaOFF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaloLampotila">
+            <EntityTypeMapping TypeName="AlytaloModel.TaloLampotila">
+              <MappingFragment StoreEntitySet="TaloLampotila">
+                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
+                <ScalarProperty Name="Nykylampotila" ColumnName="Nykylampotila" />
+                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Valot">
             <EntityTypeMapping TypeName="AlytaloModel.Valot">
               <MappingFragment StoreEntitySet="Valot">
@@ -143,25 +148,6 @@ warning 6002: The table/view 'Alytalo.dbo.Valaisin' does not have a primary key 
                 <ScalarProperty Name="ValoAikaLeima33" ColumnName="ValoAikaLeima33" />
                 <ScalarProperty Name="ValoAikaLeima66" ColumnName="ValoAikaLeima66" />
                 <ScalarProperty Name="ValoAikaLeima100" ColumnName="ValoAikaLeima100" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sauna">
-            <EntityTypeMapping TypeName="AlytaloModel.Sauna">
-              <MappingFragment StoreEntitySet="Sauna">
-                <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
-                <ScalarProperty Name="SaunaNimi" ColumnName="SaunaNimi" />
-                <ScalarProperty Name="SaunaNykyLampotila" ColumnName="SaunaNykyLampotila" />
-                <ScalarProperty Name="SaunaTavoiteLampotila" ColumnName="SaunaTavoiteLampotila" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TaloLampotila">
-            <EntityTypeMapping TypeName="AlytaloModel.TaloLampotila">
-              <MappingFragment StoreEntitySet="TaloLampotila">
-                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
-                <ScalarProperty Name="Nykylampotila" ColumnName="Nykylampotila" />
-                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -157,6 +157,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SaunaController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,6 +190,7 @@
       <DependentUpon>AlytaloEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\SaunaViewModel.cs" />
     <Compile Include="ViewModel\ValoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +257,9 @@
     <Content Include="Views\Valo\Valo33.cshtml" />
     <Content Include="Views\Valo\Valo66.cshtml" />
     <Content Include="Views\Valo\Valo100.cshtml" />
+    <Content Include="Views\Sauna\Create.cshtml" />
+    <Content Include="Views\Sauna\Delete.cshtml" />
+    <Content Include="Views\Sauna\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

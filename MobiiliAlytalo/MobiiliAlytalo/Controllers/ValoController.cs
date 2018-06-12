@@ -11,12 +11,12 @@ namespace MobiiliAlytalo.Controllers
 {
     public class ValoController : Controller
     {
-        private AlytaloEntities3 db = new AlytaloEntities3();
+        private AlytaloEntities db = new AlytaloEntities();
         // GET: Valo
         public ActionResult Index()
         {
             List<ValoViewModel> model = new List<ValoViewModel>();
-            AlytaloEntities3 entities = new AlytaloEntities3();
+            AlytaloEntities entities = new AlytaloEntities();
             try
             {
                 List<Valot> valo = entities.Valot.OrderByDescending(Valo => Valo.ValoID).ToList();
@@ -52,7 +52,7 @@ namespace MobiiliAlytalo.Controllers
         // GET: Valo/Create
         public ActionResult Create()
         {
-            AlytaloEntities3 db = new AlytaloEntities3();
+            AlytaloEntities db = new AlytaloEntities();
             ValoViewModel model = new ValoViewModel();
 
             return View(model);
@@ -240,7 +240,7 @@ namespace MobiiliAlytalo.Controllers
         }
     
     //GET: Valo/Valo66
-    //näkymän luonti: template:edit ja model class: Valot(Alytalo...)
+    
     public ActionResult Valo66(int? id)
     {
         if (id == null)
@@ -284,7 +284,7 @@ namespace MobiiliAlytalo.Controllers
         return RedirectToAction("Index");
     }
     //GET: Valo/Valo100
-    //näkymän luonti: template:edit ja model class: Valot(Alytalo...)
+   
     public ActionResult Valo100(int? id)
         {
             if (id == null)

@@ -15,7 +15,7 @@ namespace MobiiliAlytalo.Models
     public partial class TaloLampotila
     {
         public int LampotilaID { get; set; }
-        public Nullable<decimal> Nykylampotila { get; set; }
-        public Nullable<decimal> TavoiteLampotila { get; set; }
+        public Nullable<int> Nykylampotila { get; set; }
+        public Nullable<int> TavoiteLampotila { get; set; }
     }
 }

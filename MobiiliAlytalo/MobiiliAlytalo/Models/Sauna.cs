@@ -16,7 +16,8 @@ namespace MobiiliAlytalo.Models
     {
         public int SaunaID { get; set; }
         public string SaunaNimi { get; set; }
-        public Nullable<decimal> SaunaNykyLampotila { get; set; }
-        public Nullable<decimal> SaunaTavoiteLampotila { get; set; }
+        public Nullable<int> SaunaNykyLampotila { get; set; }
+        public bool SaunaON { get; set; }
+        public bool SaunaOFF { get; set; }
     }
 }
