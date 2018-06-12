@@ -251,6 +251,10 @@
     <Content Include="Views\Valo\Edit.cshtml" />
     <Content Include="Views\Valo\Create.cshtml" />
     <Content Include="Views\Valo\Delete.cshtml" />
+    <Content Include="Views\Valo\ValoONOFF.cshtml" />
+    <Content Include="Views\Valo\Valo33.cshtml" />
+    <Content Include="Views\Valo\Valo66.cshtml" />
+    <Content Include="Views\Valo\Valo100.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
